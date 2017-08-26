@@ -1,16 +1,16 @@
-import Ember from 'ember';
+import { registerHelper, unregisterHelper } from '@ember/test';
 
 export function convertSelector(selector) {
-  if (/^[\w-]+$/.test(selector)) {
+  const regex = /^[\w-]+$/;
+  if (regex.test(selector)) {
     selector = `[data-test-${selector}]`;
   }
   return selector;
 }
 
-
 export default function () {
-  Ember.Test.unregisterHelper('find');
-  Ember.Test.registerHelper('find', (app, selector, context) => {
+  unregisterHelper('find');
+  registerHelper('find', function (app, selector, context) {
     selector = convertSelector(selector);
 
     if (context) {
