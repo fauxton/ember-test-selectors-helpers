@@ -8,16 +8,20 @@ export function convertSelector(selector) {
   return selector;
 }
 
+export function customFind(selector, context) {
+  selector = convertSelector(selector);
+
+  if (context) {
+    context = convertSelector(context);
+    return Ember.$(selector, context);
+  }
+
+  return Ember.$(selector);
+}
+
 export default function () {
   unregisterHelper('find');
   registerHelper('find', function (app, selector, context) {
-    selector = convertSelector(selector);
-
-    if (context) {
-      context = convertSelector(context);
-      return Ember.$(selector, context);
-    }
-
-    return Ember.$(selector);
+    return customFind(selector, context);
   });
 }
