@@ -1,3 +1,8 @@
 <h2 id="title">Welcome to Ember</h2>
-
+<div data-test-outer-context>
+  <div data-test-my-test-selector></div>
+  <div class="my-inside-class"></div>
+</div>
+<div class="my-outside-class"></div>
+{{link-to "One" "one" data-test-one-link}}
 {{outlet}}

@@ -1,6 +1,9 @@
 import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
+import helperOverrides from './helper-overrides';
+
+helperOverrides();
 
 export default function startApp(attrs) {
   let attributes = Ember.merge({}, config.APP);
