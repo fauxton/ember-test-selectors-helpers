@@ -14,6 +14,8 @@ Given the following Handlebars template:
 <div data-test-my-div>My Div</div>
 ```
 
+Here's how you might have used the `testSelector` helper in an acceptance test:
+
 ```js
 import testSelector from 'ember-test-selectors';
 
