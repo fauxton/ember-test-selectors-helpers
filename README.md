@@ -37,7 +37,7 @@ test('an element is present', function(assert) {
 
 ```
 
-The string `my-div` will automatically be expanded to a `data-test-*` attribute,
+The string `my-div` will automatically be expanded to the proper selector,
 assuming it is a hyphenated string. Otherwise, it will behave as the default
 `find` helper does.
 
