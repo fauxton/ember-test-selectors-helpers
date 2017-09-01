@@ -13,7 +13,6 @@ var helperOverrides = function () {
   Ember.Test.registerHelper('find', function (app, selector, context) {
     selector = convertSelector(selector);
 
-    console.log({selector});
     if (context) {
       context = convertSelector(context);
       return Ember.$(selector, context);
