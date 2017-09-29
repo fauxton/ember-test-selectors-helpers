@@ -2,6 +2,7 @@ import Ember from 'ember';
 import {
   find as nativeFind,
   fillIn as nativeFillIn,
+  click as nativeClick,
 } from 'ember-native-dom-helpers';
 
 export function convertSelector(selector) {
@@ -29,6 +30,12 @@ var helperOverrides = function () {
   Ember.Test.registerHelper('fillIn', function (app, selector, text) {
     selector = convertSelector(selector);
     return nativeFillIn(selector, text);
+  });
+
+  Ember.Test.unregisterHelper('click');
+  Ember.Test.registerHelper('click', function (app, selector) {
+    selector = convertSelector(selector);
+    return nativeClick(selector);
   });
 }
 
