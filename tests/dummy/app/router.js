@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('one');
+  this.route('key-event');
 });
 
 export default Router;

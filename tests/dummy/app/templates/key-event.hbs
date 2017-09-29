@@ -1,0 +1,5 @@
+{{#if keyPressed}}
+  <div data-test-key-was-pressed></div>
+{{/if}}
+<div data-test-press-enter-key onKeyPress={{action 'keyPressed'}}>Press
+  Enter on Me</div>

@@ -3,6 +3,7 @@ import {
   find as nativeFind,
   fillIn as nativeFillIn,
   click as nativeClick,
+  keyEvent as nativeKeyEvent,
 } from 'ember-native-dom-helpers';
 
 export function convertSelector(selector) {
@@ -36,6 +37,12 @@ var helperOverrides = function () {
   Ember.Test.registerHelper('click', function (app, selector) {
     selector = convertSelector(selector);
     return nativeClick(selector);
+  });
+
+  Ember.Test.unregisterHelper('keyEvent');
+  Ember.Test.registerHelper('keyEvent', function (app, selector) {
+    selector = convertSelector(selector);
+    return nativeKeyEvent(selector);
   });
 }
 
