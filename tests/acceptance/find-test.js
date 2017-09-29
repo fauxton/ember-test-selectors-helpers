@@ -13,13 +13,6 @@ test('find helper is overridden', async function(assert) {
   assert.equal(find('my-test-selector', 'outer-context').length, 1, 'Handles context conversion with nested data-test-attrs');
 });
 
-test('click helper works as expected', async function(assert) {
-  await visit('/');
-  await click('one-link');
-
-  assert.equal(currentURL(), '/one', 'click succeeded using data-test-attr');
-});
-
 test('findWithAssert works as expected', async function(assert) {
   await visit('/');
 

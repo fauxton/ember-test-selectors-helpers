@@ -1,5 +1,8 @@
 import Ember from 'ember';
-import { find as nativeFind } from 'ember-native-dom-helpers';
+import {
+  find as nativeFind,
+  fillIn as nativeFillIn,
+} from 'ember-native-dom-helpers';
 
 export function convertSelector(selector) {
   const regex = /^[\w-]+$/;
@@ -20,6 +23,12 @@ var helperOverrides = function () {
     }
 
     return Ember.$(nativeFind(selector))
+  });
+
+  Ember.Test.unregisterHelper('fillIn');
+  Ember.Test.registerHelper('fillIn', function (app, selector, text) {
+    selector = convertSelector(selector);
+    return nativeFillIn(selector, text);
   });
 }
 
