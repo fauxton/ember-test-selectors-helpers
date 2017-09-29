@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { find as nativeFind } from 'ember-native-dom-helpers';
 
 export function convertSelector(selector) {
   const regex = /^[\w-]+$/;
@@ -15,10 +16,10 @@ var helperOverrides = function () {
 
     if (context) {
       context = convertSelector(context);
-      return Ember.$(selector, context);
+      return Ember.$(nativeFind(selector, context));
     }
 
-    return Ember.$(selector);
+    return Ember.$(nativeFind(selector))
   });
 }
 
