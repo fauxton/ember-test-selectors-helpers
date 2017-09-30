@@ -1,6 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import { find } from 'ember-test-selectors-helpers/find';
+import { find } from 'ember-test-selectors-helpers';
 
 moduleForComponent('test-all-helpers', 'Integration | Component | test all helpers', {
   integration: true
