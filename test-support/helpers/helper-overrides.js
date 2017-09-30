@@ -4,9 +4,7 @@ import customFind from './find';
 import customFillIn from './fill-in';
 import customClick from './click';
 import customKeyEvent from './key-event';
-import {
-  triggerEvent as nativeTriggerEvent,
-} from 'ember-native-dom-helpers';
+import customTriggerEvent from './trigger-event';
 
 var helperOverrides = function () {
   Ember.Test.unregisterHelper('find');
@@ -31,8 +29,7 @@ var helperOverrides = function () {
 
   Ember.Test.unregisterHelper('triggerEvent');
   Ember.Test.registerHelper('triggerEvent', function (app, selector, contextOrType, typeOrOptions, possibleOptions) {
-    selector = convertTestSelector(selector);
-    return nativeTriggerEvent(selector, contextOrType, typeOrOptions, possibleOptions);
+    return customTriggerEvent(selector, contextOrType, typeOrOptions, possibleOptions);
   });
 }
 
