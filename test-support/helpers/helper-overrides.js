@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import convertTestSelector from './convert-test-selector';
+import customFind from './find';
 import {
-  find as nativeFind,
   fillIn as nativeFillIn,
   click as nativeClick,
   keyEvent as nativeKeyEvent,
@@ -11,14 +11,7 @@ import {
 var helperOverrides = function () {
   Ember.Test.unregisterHelper('find');
   Ember.Test.registerHelper('find', function (app, selector, context) {
-    selector = convertTestSelector(selector);
-
-    if (context) {
-      context = convertTestSelector(context);
-      return Ember.$(nativeFind(selector, context));
-    }
-
-    return Ember.$(nativeFind(selector))
+    return customFind(selector, context);
   });
 
   Ember.Test.unregisterHelper('fillIn');
