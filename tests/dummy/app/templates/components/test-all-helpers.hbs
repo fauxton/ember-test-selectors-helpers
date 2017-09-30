@@ -1,0 +1,8 @@
+<div data-test-foo-bar></div>
+{{input data-test-some-input}}
+<button data-test-a-button>A Button</button>
+<div data-test-key-event-target></div>
+<div
+  class="{{if blurred 'blurred'}}"
+  data-test-blur-target
+  onblur={{action (action (mut blurred) true)}}></div>
