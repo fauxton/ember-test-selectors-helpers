@@ -1,7 +1,7 @@
 import convertTestSelector from './convert-test-selector';
 import { find as nativeFind } from 'ember-native-dom-helpers';
 
-export default function find(selector, context) {
+export function find(selector, context) {
   selector = convertTestSelector(selector);
 
   if (context) {
