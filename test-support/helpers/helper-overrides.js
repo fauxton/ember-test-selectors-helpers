@@ -2,8 +2,8 @@ import Ember from 'ember';
 import convertTestSelector from './convert-test-selector';
 import customFind from './find';
 import customFillIn from './fill-in';
+import customClick from './click';
 import {
-  click as nativeClick,
   keyEvent as nativeKeyEvent,
   triggerEvent as nativeTriggerEvent,
 } from 'ember-native-dom-helpers';
@@ -21,8 +21,7 @@ var helperOverrides = function () {
 
   Ember.Test.unregisterHelper('click');
   Ember.Test.registerHelper('click', function (app, selector) {
-    selector = convertTestSelector(selector);
-    return nativeClick(selector);
+    return customClick(selector);
   });
 
   Ember.Test.unregisterHelper('keyEvent');
