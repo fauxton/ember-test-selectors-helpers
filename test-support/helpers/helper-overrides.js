@@ -4,6 +4,7 @@ import {
   fillIn as nativeFillIn,
   click as nativeClick,
   keyEvent as nativeKeyEvent,
+  triggerEvent as nativeTriggerEvent,
 } from 'ember-native-dom-helpers';
 
 export function convertSelector(selector) {
@@ -40,9 +41,15 @@ var helperOverrides = function () {
   });
 
   Ember.Test.unregisterHelper('keyEvent');
-  Ember.Test.registerHelper('keyEvent', function (app, selector) {
+  Ember.Test.registerHelper('keyEvent', function (app, selector, type, keyCode) {
     selector = convertSelector(selector);
-    return nativeKeyEvent(selector);
+    return nativeKeyEvent(selector, type, keyCode);
+  });
+
+  Ember.Test.unregisterHelper('triggerEvent');
+  Ember.Test.registerHelper('triggerEvent', function (app, selector, contextOrType, typeOrOptions, possibleOptions) {
+    selector = convertSelector(selector);
+    return nativeTriggerEvent(selector, contextOrType, typeOrOptions, possibleOptions);
   });
 }
 
