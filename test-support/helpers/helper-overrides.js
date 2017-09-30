@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import convertTestSelector from './convert-test-selector';
 import customFind from './find';
+import customFillIn from './fill-in';
 import {
-  fillIn as nativeFillIn,
   click as nativeClick,
   keyEvent as nativeKeyEvent,
   triggerEvent as nativeTriggerEvent,
@@ -16,8 +16,7 @@ var helperOverrides = function () {
 
   Ember.Test.unregisterHelper('fillIn');
   Ember.Test.registerHelper('fillIn', function (app, selector, text) {
-    selector = convertTestSelector(selector);
-    return nativeFillIn(selector, text);
+    return customFillIn(selector, text);
   });
 
   Ember.Test.unregisterHelper('click');
