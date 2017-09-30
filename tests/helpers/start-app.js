@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
-import helperOverrides from 'ember-test-selectors-helpers/helpers/helper-overrides';
+import helperOverrides from 'ember-test-selectors-helpers/helper-overrides';
 
 helperOverrides();
 
